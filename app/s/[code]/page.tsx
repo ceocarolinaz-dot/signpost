@@ -58,6 +58,8 @@ export default async function ListingPage({
           </a>
         )}
       </div>
+
+      
         href={'/?from=' + code}
         className="mt-12 block border-t border-gray-200 pt-6 text-center text-sm text-gray-500"
       >
