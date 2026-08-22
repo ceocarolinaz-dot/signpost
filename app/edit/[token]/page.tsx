@@ -54,7 +54,7 @@ export default function EditPage() {
         setContactPhone(row.contact_phone || '');
         setContactEmail(row.contact_email || '');
         setPhotos(row.photos || []);
-        setStatus(row.status || 'active');
+        setStatus(row.status === 'unclaimed' ? 'active' : (row.status || 'active'));
       }
       setLoading(false);
     })();
