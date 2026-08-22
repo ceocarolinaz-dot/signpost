@@ -8,11 +8,7 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-export default async function ListingPage({
-  params,
-}: {
-  params: Promise<{ code: string }>;
-}) {
+export default async function ListingPage({ params }: { params: Promise<{ code: string }> }) {
   const { code } = await params;
 
   const { data: listing } = await supabase
@@ -28,12 +24,11 @@ export default async function ListingPage({
 
   const photos: string[] = listing.photos ?? [];
   const telHref = 'tel:' + String(listing.contact_phone || '').replace(/\s/g, '');
+  const refHref = '/?from=' + code;
 
   return (
     <main className="mx-auto max-w-lg px-5 py-8">
-      {photos[0] && (
-        <img src={photos[0]} alt={listing.title} className="mb-5 w-full rounded-xl object-cover" />
-      )}
+      {photos[0] && <img src={photos[0]} alt={listing.title} className="mb-5 w-full rounded-xl object-cover" />}
 
       <h1 className="text-2xl font-semibold">{listing.title}</h1>
       <p className="mt-1 text-3xl font-bold">{listing.price}</p>
@@ -52,19 +47,10 @@ export default async function ListingPage({
       <div className="mt-10 border-t border-gray-200 pt-6">
         <p className="text-sm font-medium text-gray-500">Contact</p>
         <p className="mt-1 text-lg font-semibold">{listing.contact_name}</p>
-        {listing.contact_phone && (
-          <a href={telHref} className="mt-4 block rounded-lg bg-black py-3.5 text-center font-medium text-white">
-            Call {listing.contact_phone}
-          </a>
-        )}
+        {listing.contact_phone && <a href={telHref} className="mt-4 block rounded-lg bg-black py-3.5 text-center font-medium text-white">Call {listing.contact_phone}</a>}
       </div>
 
-      
-        href={'/?from=' + code}
-        className="mt-12 block border-t border-gray-200 pt-6 text-center text-sm text-gray-500"
-      >
-        Selling something yourself? Make a page like this.
-      </a>
+      <a href={refHref} className="mt-12 block border-t border-gray-200 pt-6 text-center text-sm text-gray-500">Selling something yourself? Make a page like this.</a>
     </main>
   );
 }
