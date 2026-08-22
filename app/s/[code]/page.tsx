@@ -58,6 +58,11 @@ export default async function ListingPage({
           </a>
         )}
       </div>
+        href={'/?from=' + code}
+        className="mt-12 block border-t border-gray-200 pt-6 text-center text-sm text-gray-500"
+      >
+        Selling something yourself? Make a page like this.
+      </a>
     </main>
   );
 }
