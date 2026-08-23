@@ -27,6 +27,7 @@ export default async function ListingPage({ params }: { params: Promise<{ code: 
 
   return (
     <main className="mx-auto max-w-lg px-5 py-8">
+      {upper === 'DEMO' && <p className="mb-5 rounded-lg bg-amber-100 px-4 py-3 text-center text-sm text-amber-900">Example listing — this is what your buyers would see.</p>}
       {sold && <p className="mb-5 rounded-lg bg-gray-900 py-2.5 text-center text-sm font-medium text-white">Sold</p>}
 
       {photos[0] && <img src={photos[0]} alt={listing.title} className="mb-5 w-full rounded-xl object-cover" />}
