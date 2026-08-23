@@ -49,10 +49,10 @@ export default function Home() {
     setBusy(false);
   }
 
- const steps = [
-    { n: '1', h: 'Pay and get your code', p: 'You get a listing page of your own and a link back to it. Nothing gets posted.' },
-    { n: '2', h: 'Add your details', p: 'Photos, price, description, how you want to be contacted. A few minutes on your phone.' },
-    { n: '3', h: 'Print it and put it out', p: 'Download the sign in whichever size suits, print it, and stick it on. Anyone walking past scans it.' },
+const steps = [
+    { n: '1', h: 'Get your QR and listing page', p: 'Your own listing page, with a private link back to it so you can change things any time.' },
+    { n: '2', h: 'Add your details', p: 'Photos, price, description and how you want buyers to contact you.' },
+    { n: '3', h: 'Print and sell', p: 'Download the sign in whichever size suits, print it, and put it on your item.' },
   ];
 
   return (
