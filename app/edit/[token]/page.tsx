@@ -38,7 +38,7 @@ export default function EditPage() {
   const [status, setStatus] = useState('active');
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState('');
-
+  const [scanCount, setScanCount] = useState(0);
   useEffect(() => {
     (async () => {
       const { data } = await supabase.rpc('get_listing_by_token', { t: token });
@@ -55,6 +55,7 @@ export default function EditPage() {
         setContactEmail(row.contact_email || '');
         setPhotos(row.photos || []);
         setStatus(row.status === 'unclaimed' ? 'active' : (row.status || 'active'));
+        setScanCount(row.scan_count || 0);
       }
       setLoading(false);
     })();
@@ -130,7 +131,7 @@ export default function EditPage() {
     <main className="mx-auto max-w-lg px-5 py-8">
       <h1 className="text-2xl font-semibold">Edit listing</h1>
       <p className="mt-1 text-sm text-gray-500">Code {code}</p>
-
+      <p className="mt-1 text-sm text-gray-500">{scanCount === 0 ? 'No scans yet' : scanCount === 1 ? '1 scan' : scanCount + ' scans'}</p>
       <label className={label}>Title</label>
       <input className={field} value={title} onChange={(e) => setTitle(e.target.value)} />
 
