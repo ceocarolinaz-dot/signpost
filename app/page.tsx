@@ -54,7 +54,6 @@ export default function Home() {
     { n: '2', h: 'Add your details', p: 'Photos, price, description, how you want to be contacted. A few minutes on your phone.' },
     { n: '3', h: 'Print it and put it out', p: 'Download the sign in whichever size suits, print it, and stick it on. Anyone walking past scans it.' },
   ];
-</br>```
 
   return (
     <div className="min-h-screen bg-slate-100">
