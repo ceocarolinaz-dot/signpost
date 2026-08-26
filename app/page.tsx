@@ -49,30 +49,35 @@ export default function Home() {
     setBusy(false);
   }
 
-const steps = [
+  const steps = [
     { n: '1', h: 'Get your QR and listing page', p: 'Your own listing page, with a private link back to it so you can change things any time.' },
     { n: '2', h: 'Add your details', p: 'Photos, price, description and how you want buyers to contact you.' },
     { n: '3', h: 'Print and sell', p: 'Download the sign in whichever size suits, print it, and put it on your item.' },
+  ];
+
+  const reasons = [
+    { h: 'Drop the price without reprinting', p: 'Change it on your phone. The sign stays where it is.' },
+    { h: 'See how many people scanned it', p: 'If forty people looked and nobody called, the price is the problem, not the sign.' },
+    { h: 'Stop answering the same questions', p: 'Rego, kilometres, service history, why you are selling. It is all on the page, so the people who call you have already read it.' },
+    { h: 'Mark it sold when it goes', p: 'The page says sold instead of leaving people wondering.' },
   ];
 
   return (
     <div className="min-h-screen bg-slate-100">
       <div className="mx-auto max-w-5xl px-5 py-10">
 
-        <p className="text-xs font-bold uppercase tracking-widest text-slate-500">SignPost</p>
+        <p className="text-2xl font-black uppercase tracking-tight text-slate-900">Curb<span className="text-red-600">sell</span></p>
 
         <div className="mt-10 grid items-center gap-12 md:grid-cols-2">
           <div>
             <h1 className="text-4xl font-black uppercase leading-none tracking-tight text-slate-900 md:text-5xl">
               Everyone who<br />walks past<br />is a buyer.
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-slate-700">
-              People won't ring a stranger to ask what the kilometres are. They'll scan and find out. Put one on your windscreen and every passerby sees your full listing — before they call you.
-            </p>
-            <button onClick={buy} disabled={busy} className="mt-8 w-full rounded bg-red-600 px-8 py-4 text-base font-bold uppercase tracking-wide text-white md:w-auto">
+            
+            <button onClick={buy} disabled={busy} className="mt-10 w-full rounded bg-red-600 px-8 py-4 text-base font-bold uppercase tracking-wide text-white md:w-auto">
               {busy ? 'One moment' : 'Download your sign — $19'}
             </button>
-            <p className="mt-3 text-sm text-slate-500">Six print sizes, ready to download. Nothing gets posted.</p>
+            <p className="mt-3 text-sm text-slate-500">Six print sizes, ready to download.</p>
           </div>
 
           <div className="flex justify-center">
@@ -98,22 +103,12 @@ const steps = [
         <div className="mt-20 border-t border-slate-300 pt-10">
           <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900">Why not just write it on cardboard</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
-            <div>
-              <p className="font-bold text-slate-900">Drop the price without reprinting</p>
-              <p className="mt-1 text-sm leading-relaxed text-slate-600">Change it on your phone. The sign stays where it is.</p>
-            </div>
-            <div>
-              <p className="font-bold text-slate-900">See how many people scanned it</p>
-              <p className="mt-1 text-sm leading-relaxed text-slate-600">If forty people looked and nobody called, the price is the problem, not the sign.</p>
-            </div>
-            <div>
-              <p className="font-bold text-slate-900">Room for the whole story</p>
-              <p className="mt-1 text-sm leading-relaxed text-slate-600">Photos, service history, why you are selling. Things that do not fit on a windscreen card.</p>
-            </div>
-            <div>
-              <p className="font-bold text-slate-900">Mark it sold when it goes</p>
-              <p className="mt-1 text-sm leading-relaxed text-slate-600">The page says sold instead of leaving people wondering.</p>
-            </div>
+            {reasons.map((r) => (
+              <div key={r.h}>
+                <p className="font-bold text-slate-900">{r.h}</p>
+                <p className="mt-1 text-sm leading-relaxed text-slate-600">{r.p}</p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -126,25 +121,9 @@ const steps = [
           {err && <p className="mt-4 text-sm text-red-300">{err}</p>}
         </div>
 
-        <div className="mt-16 border-t border-slate-300 pt-10">
-          {sent ? (
-            <div>
-              <p className="text-lg font-bold text-slate-900">Got it. I will be in touch.</p>
-              <p className="mt-1 text-sm text-slate-600">Early signs are free while I am testing this.</p>
-            </div>
-          ) : (
-            <div className="max-w-md">
-              <p className="text-lg font-bold text-slate-900">Want to think about it?</p>
-              <p className="mt-1 text-sm text-slate-600">Leave your email and I will let you know how it goes. Early signs are free while I am testing.</p>
-              <input className="mt-4 w-full rounded border border-slate-400 bg-white px-3 py-2.5" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <input className="mt-2 w-full rounded border border-slate-400 bg-white px-3 py-2.5" placeholder="What are you selling?" value={note} onChange={(e) => setNote(e.target.value)} />
-              <button onClick={submit} disabled={busy} className="mt-3 rounded border-2 border-slate-900 px-6 py-2.5 font-bold text-slate-900">{busy ? 'Sending' : 'Send'}</button>
-              {err && <p className="mt-3 text-sm text-red-700">{err}</p>}
-            </div>
-          )}
-        </div>
+        
 
-        <p className="mt-20 pb-10 text-xs uppercase tracking-widest text-slate-400">SignPost — Mornington Peninsula</p>
+        <p className="mt-20 pb-10 text-xs uppercase tracking-widest text-slate-400">Curbsell</p>
       </div>
     </div>
   );
