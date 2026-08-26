@@ -64,10 +64,10 @@ const steps = [
         <div className="mt-10 grid items-center gap-12 md:grid-cols-2">
           <div>
             <h1 className="text-4xl font-black uppercase leading-none tracking-tight text-slate-900 md:text-5xl">
-              A for sale sign<br />that answers<br />questions.
+              Everyone who<br />walks past<br />is a buyer.
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-slate-700">
-              A paper sign gives someone your phone number. This one gives them the year, the kilometres, the service history and what it looks like inside — before they call you.
+              People won't ring a stranger to ask what the kilometres are. They'll scan and find out. Put one on your windscreen and every passerby sees your full listing — before they call you.
             </p>
             <button onClick={buy} disabled={busy} className="mt-8 w-full rounded bg-red-600 px-8 py-4 text-base font-bold uppercase tracking-wide text-white md:w-auto">
               {busy ? 'One moment' : 'Download your sign — $19'}

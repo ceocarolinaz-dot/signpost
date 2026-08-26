@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: email,
-      subject: 'Your SignPost sign is ready',
+      subject: 'Your Curbsell sign is ready',
       text: 'Thanks for your order.\n\nStep 1 - add your details and photos:\n' + origin + '/edit/' + token + '\n\nStep 2 - download your sign:\n' + origin + '/download/' + code + '\n\nYour public listing will be at ' + origin + '/s/' + code + '\n\nKeep this email. The edit link is the only way back in.',
     });
   }

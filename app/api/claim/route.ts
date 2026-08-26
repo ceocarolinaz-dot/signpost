@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: email,
-      subject: 'Your SignPost listing',
+      subject: 'Your Curbsell listing',
       text: 'Here is the link to edit your listing. Keep this email, it is the only way back in.\n\n' + link + '\n\nYour public listing is at ' + origin + '/s/' + String(code).toUpperCase(),
     });
 

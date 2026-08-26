@@ -10,7 +10,7 @@ export async function POST(req: Request) {
       price_data: {
         currency: 'aud',
         unit_amount: 1900,
-        product_data: { name: 'SignPost listing', description: 'QR for sale sign in six print sizes, plus your own listing page' },
+        product_data: { name: 'Curbsell listing', description: 'QR for sale sign in six print sizes, plus your own listing page' },
       },
       quantity: 1,
     }],
