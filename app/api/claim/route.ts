@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
-      from: 'Curbsell <hello@send.curbsell.com>',
+      from: 'Curbsell <hello@curbsell.com>',
       to: email,
       subject: 'Your Curbsell listing',
       text: 'Here is the link to edit your listing. Keep this email, it is the only way back in.\n\n' + link + '\n\nYour public listing is at ' + origin + '/s/' + String(code).toUpperCase(),

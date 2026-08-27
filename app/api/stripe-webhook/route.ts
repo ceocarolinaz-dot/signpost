@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: 'Curbsell <hello@send.curbsell.com>',
+      from: 'Curbsell <hello@curbsell.com>',
       to: email,
       subject: 'Your Curbsell sign is ready',
       text: 'Thanks for your order.\n\nStep 1 - add your details and photos:\n' + origin + '/edit/' + token + '\n\nStep 2 - download your sign:\n' + origin + '/download/' + code + '\n\nYour public listing will be at ' + origin + '/s/' + code + '\n\nKeep this email. The edit link is the only way back in.',
