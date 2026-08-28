@@ -28,6 +28,7 @@ export default async function ListingPage({ params }: { params: Promise<{ code: 
   return (
     <main className="mx-auto max-w-lg px-5 py-8">
       {upper === 'DEMO' && <p className="mb-5 rounded-lg bg-amber-100 px-4 py-3 text-center text-sm text-amber-900">Example listing — this is what your buyers would see.</p>}
+
       {sold && <p className="mb-5 rounded-lg bg-gray-900 py-2.5 text-center text-sm font-medium text-white">Sold</p>}
 
       {photos[0] && <img src={photos[0]} alt={listing.title} className="mb-5 w-full rounded-xl object-cover" />}
@@ -55,7 +56,9 @@ export default async function ListingPage({ params }: { params: Promise<{ code: 
         </div>
       )}
 
-     <a href={refHref} className="mt-12 block border-t border-gray-200 pt-6 text-center text-sm text-gray-500">Selling something yourself? Make a page like this with <span className="font-black uppercase tracking-tight text-slate-900">Curb<span className="text-red-600">sell</span></span></a>
+      <a href={'/report/' + upper} className="mt-8 block text-center text-xs text-gray-400">Report this listing</a>
+
+      <a href={refHref} className="mt-12 block border-t border-gray-200 pt-6 text-center text-sm text-gray-500">Selling something yourself? Make a page like this with <span className="font-black uppercase tracking-tight text-slate-900">Curb<span className="text-red-600">sell</span></span></a>
     </main>
   );
 }

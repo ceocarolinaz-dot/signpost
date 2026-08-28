@@ -123,7 +123,7 @@ export default function Home() {
 
         
 
-        <p className="mt-20 pb-10 text-xs uppercase tracking-widest text-slate-400">Curbsell</p>
+        <p className="mt-20 pb-10 text-xs uppercase tracking-widest text-slate-400">Curbsell &nbsp;·&nbsp; <a href="/terms" className="underline">Terms</a> &nbsp;·&nbsp; <a href="/privacy" className="underline">Privacy</a></p>
       </div>
     </div>
   );
