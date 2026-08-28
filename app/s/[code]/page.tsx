@@ -55,7 +55,7 @@ export default async function ListingPage({ params }: { params: Promise<{ code: 
         </div>
       )}
 
-      <a href={refHref} className="mt-12 block border-t border-gray-200 pt-6 text-center text-sm text-gray-500">Selling something yourself? Make a page like this.</a>
+     <a href={refHref} className="mt-12 block border-t border-gray-200 pt-6 text-center text-sm text-gray-500">Selling something yourself? Make a page like this with <span className="font-black uppercase tracking-tight text-slate-900">Curb<span className="text-red-600">sell</span></span></a>
     </main>
   );
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import Logo from '../../components/Logo';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { createClient } from '@supabase/supabase-js';
@@ -129,8 +130,9 @@ export default function EditPage() {
 
   return (
     <main className="mx-auto max-w-lg px-5 py-8">
-      <h1 className="text-2xl font-semibold">Edit listing</h1>
-      <p className="mt-1 text-sm text-gray-500">Code {code}</p>
+      <Logo />
+      <h1 className="mt-8 text-2xl font-black uppercase tracking-tight text-slate-900">Your listing</h1>
+      <p className="mt-1 text-sm text-gray-500">curbsell.com/s/{code}</p>
       <p className="mt-1 text-sm text-gray-500">{scanCount === 0 ? 'No scans yet' : scanCount === 1 ? '1 scan' : scanCount + ' scans'}</p>
       <label className={label}>Title</label>
       <input className={field} value={title} onChange={(e) => setTitle(e.target.value)} />
