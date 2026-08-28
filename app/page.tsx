@@ -59,7 +59,7 @@ export default function Home() {
     { h: 'Drop the price without reprinting', p: 'Change it on your phone. The sign stays where it is.' },
     { h: 'See how many people scanned it', p: 'If forty people looked and nobody called, the price is the problem, not the sign.' },
     { h: 'Stop answering the same questions', p: 'Rego, kilometres, service history, why you are selling. It is all on the page, so the people who call you have already read it.' },
-    { h: 'Mark it sold when it goes', p: 'The page says sold instead of leaving people wondering.' },
+    { h: 'Use it again next time', p: 'Sell the car, wipe the listing, put the same sign on whatever you are selling next.' },
   ];
 
   return (
