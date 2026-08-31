@@ -33,7 +33,7 @@ export default async function Download({ params }: { params: Promise<{ code: str
         <p className="font-bold text-slate-900">Printing it</p>
         <p className="mt-2">Ask for matte lamination. Gloss reflects sunlight and the code stops scanning.</p>
         <p className="mt-2">Print at actual size. Do not let the printer scale it to fit.</p>
-        <p className="mt-2">Before you put it out, scan it yourself from where a buyer would stand. Check it in direct sun and through glass.</p>
+        <p className="mt-2">Before you put it out, scan it yourself from where a buyer would stand.</p>
       </div>
 
       <a href={'/s/' + c} className="mt-8 block rounded bg-slate-900 py-3.5 text-center font-bold text-white">View your listing</a>
