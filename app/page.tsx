@@ -66,7 +66,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-100">
       <div className="mx-auto max-w-5xl px-5 py-10">
 
-        <p className="text-2xl font-black uppercase tracking-tight text-slate-900">Curb<span className="text-red-600">sell</span></p>
+        <p className="mt-1 text-xs font-medium uppercase tracking-widest text-slate-400">The sign that sells</p>
 
         <div className="mt-10 grid items-center gap-12 md:grid-cols-2">
           <div>
