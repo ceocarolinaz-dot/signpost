@@ -66,6 +66,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-100">
       <div className="mx-auto max-w-5xl px-5 py-10">
 
+        <p className="text-2xl font-black uppercase tracking-tight text-slate-900">Curb<span className="text-red-600">sell</span></p>
         <p className="mt-1 text-xs font-medium uppercase tracking-widest text-slate-400">The sign that sells</p>
 
         <div className="mt-10 grid items-center gap-12 md:grid-cols-2">
@@ -73,7 +74,7 @@ export default function Home() {
             <h1 className="text-4xl font-black uppercase leading-none tracking-tight text-slate-900 md:text-5xl">
               Everyone who<br />walks past<br />is a buyer.
             </h1>
-            
+
             <button onClick={buy} disabled={busy} className="mt-10 w-full rounded bg-red-600 px-8 py-4 text-base font-bold uppercase tracking-wide text-white md:w-auto">
               {busy ? 'One moment' : 'Download your sign — $19'}
             </button>
@@ -121,9 +122,7 @@ export default function Home() {
           {err && <p className="mt-4 text-sm text-red-300">{err}</p>}
         </div>
 
-        
-
-        <p className="mt-20 pb-10 text-xs uppercase tracking-widest text-slate-400">Curbsell &nbsp;·&nbsp; <a href="/terms" className="underline">Terms</a> &nbsp;·&nbsp; <a href="/privacy" className="underline">Privacy</a></p>
+        <p className="mt-20 pb-10 text-xs uppercase tracking-widest text-slate-400">Curbsell &middot; <a href="/terms" className="underline">Terms</a> &middot; <a href="/privacy" className="underline">Privacy</a></p>
       </div>
     </div>
   );
