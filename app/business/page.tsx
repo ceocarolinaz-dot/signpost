@@ -31,7 +31,7 @@ export default function Business() {
       ) : (
         <div className="mt-10">
           <h1 className="text-3xl font-black uppercase tracking-tight text-slate-900">Signs for your business</h1>
-          <p className="mt-3 leading-relaxed text-slate-700">Dealers, brokers, agents — put a branded QR sign on every item you list. Each one opens the full listing and tells you how many people scanned it. Tell us a bit about what you sell and we will be in touch.</p>
+                    <p className="mt-3 leading-relaxed text-slate-700">Dealers, brokers and agents — a branded QR sign for every item you list, with your logo, ready to print through your own signage. Each one opens the full listing and tells you how many people scanned it. Tell us what you sell and we will be in touch.</p>
 
           <input className={field} placeholder="Your name" value={f.name} onChange={(e) => set('name', e.target.value)} />
           <input className={field} placeholder="Business name" value={f.business} onChange={(e) => set('business', e.target.value)} />
