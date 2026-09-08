@@ -7,12 +7,12 @@ import path from 'path';
 const MM = 2.834645669;
 
 const SIZES: Record<string, any> = {
-  a4p: { w: 210, h: 297, land: false, margin: 15, banH: 40, banPt: 64, qr: 140, capPt: 30, subPt: 15 },
-  a3p: { w: 297, h: 420, land: false, margin: 20, banH: 56, banPt: 92, qr: 200, capPt: 42, subPt: 20 },
-  a4l: { w: 297, h: 210, land: true, margin: 14, banH: 38, banPt: 62, qr: 128, capPt: 28, subPt: 14 },
-  a3l: { w: 420, h: 297, land: true, margin: 18, banH: 54, banPt: 90, qr: 185, capPt: 40, subPt: 18 },
-  a2l: { w: 594, h: 420, land: true, margin: 25, banH: 76, banPt: 128, qr: 235, capPt: 50, subPt: 22 },
-  a1l: { w: 841, h: 594, land: true, margin: 35, banH: 108, banPt: 182, qr: 340, capPt: 72, subPt: 30 },
+  a4p: { w: 210, h: 297, land: false, margin: 14, banH: 34, banPt: 60, qr: 150 },
+  a3p: { w: 297, h: 420, land: false, margin: 18, banH: 48, banPt: 86, qr: 210 },
+  a4l: { w: 297, h: 210, land: true, margin: 12, banH: 30, banPt: 50, qr: 118 },
+  a3l: { w: 420, h: 297, land: true, margin: 16, banH: 44, banPt: 74, qr: 168 },
+  a2l: { w: 594, h: 420, land: true, margin: 22, banH: 64, banPt: 108, qr: 235 },
+  a1l: { w: 841, h: 594, land: true, margin: 32, banH: 92, banPt: 154, qr: 340 },
 };
 
 export async function GET(req: Request, ctx: { params: Promise<{ code: string }> }) {
@@ -50,8 +50,10 @@ export async function GET(req: Request, ctx: { params: Promise<{ code: string }>
   const bits = q.modules.data;
   const qrSize = s.qr * MM;
   const mod = qrSize / n;
+
+  const qrGap = Math.max(6 * MM, banH * 0.25);
   const qrX = (PW - qrSize) / 2;
-  const qrY = banY - 16 * MM - qrSize;
+  const qrY = banY - qrGap - qrSize;
 
   for (let r = 0; r < n; r++) {
     for (let c = 0; c < n; c++) {
@@ -61,13 +63,18 @@ export async function GET(req: Request, ctx: { params: Promise<{ code: string }>
     }
   }
 
+  const capPt = Math.min(s.banPt * 0.42, 46);
+  const subPt = capPt * 0.42;
+  const capY = qrY - (qrSize * 0.08) - capPt;
+  const footY = capY - capPt * 0.9;
+
   const ctr = (t: string, y: number, size: number, font: any, color: any) => {
     const w = font.widthOfTextAtSize(t, size);
     page.drawText(t, { x: (PW - w) / 2, y, size, font, color });
   };
 
-  ctr('Scan for full details', qrY - 15 * MM, s.capPt, reg, K);
-  ctr('curbsell.com', qrY - 28 * MM, s.subPt * 1.4, archivo, RED);
+  ctr('Scan for full details', capY, capPt, reg, K);
+  ctr('curbsell.com', footY, subPt * 1.4, archivo, RED);
 
   const bytes = await doc.save();
   return new Response(Buffer.from(bytes), {
