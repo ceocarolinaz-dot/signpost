@@ -29,11 +29,20 @@ export default async function Download({ params }: { params: Promise<{ code: str
         ))}
       </div>
 
-      <div className="mt-10 border-t border-slate-200 pt-6 text-sm leading-relaxed text-slate-700">
+            <div className="mt-10 border-t border-slate-200 pt-6 text-sm leading-relaxed text-slate-700">
         <p className="font-bold text-slate-900">Printing it</p>
-        <p className="mt-2">Ask for matte lamination. Gloss reflects sunlight and the code stops scanning.</p>
-        <p className="mt-2">Print at actual size. Do not let the printer scale it to fit.</p>
-        <p className="mt-2">Before you put it out, scan it yourself from where a buyer would stand.</p>
+        <p className="mt-2">Always ask for matte, not gloss. Gloss reflects sunlight and the code stops scanning. Print at actual size — don't let the printer scale it to fit.</p>
+
+        <p className="mt-4 font-bold text-slate-900">In a car window</p>
+        <p className="mt-2">Laminated paper is fine. Any print shop, a few dollars.</p>
+
+        <p className="mt-4 font-bold text-slate-900">Outdoors for weeks or months</p>
+        <p className="mt-2">Boats, caravans, anything left outside — get it printed on corflute (corrugated plastic) with a UV-resistant finish, from a sign shop. It's weatherproof, takes eyelets or cable ties, and the code won't fade. Around $25–45.</p>
+
+        <p className="mt-4 font-bold text-slate-900">Premium or long-term</p>
+        <p className="mt-2">For high-value items, aluminium composite (ACM) with UV lamination lasts years and looks the part.</p>
+
+        <p className="mt-5">Whatever you print on, scan it yourself first from where a buyer would stand — in the sun, and through glass if it's behind a window.</p>
       </div>
 
       <a href={'/s/' + c} className="mt-8 block rounded bg-slate-900 py-3.5 text-center font-bold text-white">View your listing</a>

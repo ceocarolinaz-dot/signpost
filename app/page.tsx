@@ -122,7 +122,7 @@ export default function Home() {
           {err && <p className="mt-4 text-sm text-red-300">{err}</p>}
         </div>
 
-        <p className="mt-20 pb-10 text-xs uppercase tracking-widest text-slate-400">Curbsell &middot; <a href="/terms" className="underline">Terms</a> &middot; <a href="/privacy" className="underline">Privacy</a></p>
+               <p className="mt-20 pb-10 text-xs uppercase tracking-widest text-slate-400">Curbsell &middot; <a href="/terms" className="underline">Terms</a> &middot; <a href="/privacy" className="underline">Privacy</a> &middot; <a href="/business" className="underline">For business</a></p>
       </div>
     </div>
   );
