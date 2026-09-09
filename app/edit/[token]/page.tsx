@@ -37,9 +37,11 @@ export default function EditPage() {
   const [contactEmail, setContactEmail] = useState('');
   const [photos, setPhotos] = useState<string[]>([]);
   const [status, setStatus] = useState('active');
+  const [signType, setSignType] = useState('FOR SALE');
+  const [scanCount, setScanCount] = useState(0);
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState('');
-  const [scanCount, setScanCount] = useState(0);
+
   useEffect(() => {
     (async () => {
       const { data } = await supabase.rpc('get_listing_by_token', { t: token });
@@ -56,6 +58,7 @@ export default function EditPage() {
         setContactEmail(row.contact_email || '');
         setPhotos(row.photos || []);
         setStatus(row.status === 'unclaimed' ? 'active' : (row.status || 'active'));
+        setSignType(row.sign_type || 'FOR SALE');
         setScanCount(row.scan_count || 0);
       }
       setLoading(false);
@@ -117,6 +120,7 @@ export default function EditPage() {
       p_contact_email: contactEmail,
       p_photos: photos,
       p_status: status,
+      p_sign_type: signType,
     });
     setMsg(error ? error.message : 'Saved');
     setBusy(false);
@@ -134,6 +138,18 @@ export default function EditPage() {
       <h1 className="mt-8 text-2xl font-black uppercase tracking-tight text-slate-900">Your listing</h1>
       <p className="mt-1 text-sm text-gray-500">curbsell.com/s/{code}</p>
       <p className="mt-1 text-sm text-gray-500">{scanCount === 0 ? 'No scans yet' : scanCount === 1 ? '1 scan' : scanCount + ' scans'}</p>
+
+      <label className={label}>Sign type</label>
+      <select className={field} value={signType} onChange={(e) => setSignType(e.target.value)}>
+        <option>FOR SALE</option>
+        <option>FOR LEASE</option>
+        <option>FOR RENT</option>
+        <option>HOME FOR SALE</option>
+        <option>OPEN HOUSE</option>
+        <option>GARAGE SALE</option>
+        <option>SOLD</option>
+      </select>
+
       <label className={label}>Title</label>
       <input className={field} value={title} onChange={(e) => setTitle(e.target.value)} />
 
@@ -184,11 +200,7 @@ export default function EditPage() {
         <option value="deleted">Deleted</option>
       </select>
 
-      <button
-        onClick={save}
-        disabled={busy}
-        className="mt-8 w-full rounded-lg bg-black py-3.5 font-medium text-white"
-      >
+      <button onClick={save} disabled={busy} className="mt-8 w-full rounded-lg bg-black py-3.5 font-medium text-white">
         {busy ? 'Saving…' : 'Save changes'}
       </button>
 

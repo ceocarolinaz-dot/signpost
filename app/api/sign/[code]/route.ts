@@ -1,6 +1,7 @@
 import { PDFDocument, StandardFonts, cmyk } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import QRCode from 'qrcode';
+import { createClient } from '@supabase/supabase-js';
 import { readFileSync } from 'fs';
 import path from 'path';
 
@@ -22,7 +23,12 @@ export async function GET(req: Request, ctx: { params: Promise<{ code: string }>
   if (!s) return new Response('Unknown size', { status: 400 });
 
   const origin = new URL(req.url).origin;
-  const url = origin + '/s/' + code.toUpperCase();
+  const upper = code.toUpperCase();
+  const url = origin + '/s/' + upper;
+
+  const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!);
+  const { data: listing } = await supabase.from('listings').select('sign_type').eq('code', upper).single();
+  const label = (listing?.sign_type || 'FOR SALE').toUpperCase();
 
   const PW = s.w * MM, PH = s.h * MM;
   const doc = await PDFDocument.create();
@@ -41,9 +47,11 @@ export async function GET(req: Request, ctx: { params: Promise<{ code: string }>
   const banY = PH - m - banH;
   page.drawRectangle({ x: m, y: banY, width: PW - 2 * m, height: banH, color: RED });
 
-  const label = 'FOR SALE';
-  const lw = archivo.widthOfTextAtSize(label, s.banPt);
-  page.drawText(label, { x: (PW - lw) / 2, y: banY + banH * 0.31, size: s.banPt, font: archivo, color: WHITE });
+  const maxW = (PW - 2 * m) * 0.9;
+  let banPt = s.banPt;
+  while (archivo.widthOfTextAtSize(label, banPt) > maxW && banPt > 10) banPt -= 2;
+  const lw = archivo.widthOfTextAtSize(label, banPt);
+  page.drawText(label, { x: (PW - lw) / 2, y: banY + banH * 0.31, size: banPt, font: archivo, color: WHITE });
 
   const q = QRCode.create(url, { errorCorrectionLevel: 'L' });
   const n = q.modules.size;
@@ -80,7 +88,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ code: string }>
   return new Response(Buffer.from(bytes), {
     headers: {
       'Content-Type': 'application/pdf',
-      'Content-Disposition': 'attachment; filename="curbsell-' + code.toUpperCase() + '-' + key + '.pdf"',
+      'Content-Disposition': 'attachment; filename="curbsell-' + upper + '-' + key + '.pdf"',
     },
   });
 }
