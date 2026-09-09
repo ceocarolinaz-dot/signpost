@@ -147,7 +147,6 @@ export default function EditPage() {
         <option>HOME FOR SALE</option>
         <option>OPEN HOUSE</option>
         <option>GARAGE SALE</option>
-        <option>SOLD</option>
       </select>
 
       <label className={label}>Title</label>
