@@ -62,6 +62,8 @@ export default function Home() {
     { h: 'Use it again next time', p: 'Sell the car, wipe the listing, put the same sign on whatever you are selling next.' },
   ];
 
+  const tags = ['FOR SALE', 'FOR LEASE', 'HOME FOR SALE', 'OPEN HOUSE', 'GARAGE SALE'];
+
   return (
     <div className="min-h-screen bg-slate-100">
       <div className="mx-auto max-w-5xl px-5 py-10">
@@ -114,15 +116,20 @@ export default function Home() {
         </div>
 
         <div className="mt-20 rounded bg-slate-900 p-8 text-center md:p-12">
-          <p className="text-2xl font-black uppercase tracking-tight text-white">Cars, caravans, boats, cabins</p>
-          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-slate-300">If it sits somewhere people walk past, it can have a sign.</p>
+          <p className="text-2xl font-black uppercase tracking-tight text-white">Not just for sale</p>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-slate-300">Choose your sign, add your details, print it. Works on anything people walk past.</p>
+          <div className="mt-5 flex flex-wrap justify-center gap-2">
+            {tags.map((t) => (
+              <span key={t} className={'rounded px-3 py-1.5 text-xs font-black tracking-wide ' + (t === 'FOR SALE' ? 'bg-red-600 text-white' : 'border border-slate-700 bg-slate-800 text-white')}>{t}</span>
+            ))}
+          </div>
           <button onClick={buy} disabled={busy} className="mt-6 rounded bg-red-600 px-8 py-4 text-base font-bold uppercase tracking-wide text-white">
             {busy ? 'One moment' : 'Download your sign — $19'}
           </button>
           {err && <p className="mt-4 text-sm text-red-300">{err}</p>}
         </div>
 
-               <p className="mt-20 pb-10 text-xs uppercase tracking-widest text-slate-400">Curbsell &middot; <a href="/terms" className="underline">Terms</a> &middot; <a href="/privacy" className="underline">Privacy</a> &middot; <a href="/business" className="underline">For business</a></p>
+        <p className="mt-20 pb-10 text-xs uppercase tracking-widest text-slate-400">Curbsell &middot; <a href="/terms" className="underline">Terms</a> &middot; <a href="/privacy" className="underline">Privacy</a> &middot; <a href="/business" className="underline">For business</a></p>
       </div>
     </div>
   );
